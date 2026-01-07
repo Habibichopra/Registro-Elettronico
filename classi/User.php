@@ -43,6 +43,13 @@ class User {
 
     //restituisce la lista di tutti i professori
     public function getAllProfessori() {
+        $query = "SELECT id, nome, cognome, email FROM " . $this->nome_tabella . " 
+                  WHERE ruolo = 'professore' ORDER BY cognome ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
