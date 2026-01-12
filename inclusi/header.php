@@ -11,5 +11,9 @@ require_once __DIR__ . '/../config/config.php';
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/styles.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/dashboard.css">
  
+</head>
+
+<body>
+    <div class="contenitore-principale">
 
 
