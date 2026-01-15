@@ -24,7 +24,14 @@ class Voto{
 
     //eliminazione del voto
     public function eliminaVoto($id) {
-    
+        $query = "DELETE FROM " . $this->nome_tabella . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //get voti di un studente
