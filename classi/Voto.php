@@ -14,7 +14,25 @@ class Voto{
 
     //inserimento voto
     public function addVoto($studente_id, $corso_id, $tipo, $voto, $note) {
+        $query = "INSERT INTO " . $this->nome_tabella . " 
+            (studente_id, corso_id, tipo_valutazione, voto, data_voto, note) 
+            VALUES (:sid, :cid, :tipo, :voto, CURDATE(), :note)";
+        
+        $stmt = $this->conn->prepare($query);
 
+        $note = htmlspecialchars(strip_tags($note));
+        $tipo = htmlspecialchars(strip_tags($tipo));
+
+        $stmt->bindParam(":sid", $studente_id);
+        $stmt->bindParam(":cid", $corso_id);
+        $stmt->bindParam(":tipo", $tipo);
+        $stmt->bindParam(":voto", $voto);
+        $stmt->bindParam(":note", $note);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //aggiorna voto
