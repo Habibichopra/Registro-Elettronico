@@ -13,7 +13,42 @@ class User {
 
     //registra un nuovo utente nel database
     public function registra($username, $password, $email, $nome, $cognome, $ruolo, $matricola = null) {
+        $query = "INSERT INTO " . $this->nome_tabella . " 
+                  (username, password_hash, email, nome, cognome, ruolo, matricola) 
+                  VALUES (:username, :password_hash, :email, :nome, :cognome, :ruolo, :matricola)";
+
+        $stmt = $this->conn->prepare($query);
+
+        $username = htmlspecialchars(strip_tags($username));
+        $email = htmlspecialchars(strip_tags($email));
+        $nome = htmlspecialchars(strip_tags($nome));
+        $cognome = htmlspecialchars(strip_tags($cognome));
+        $ruolo = htmlspecialchars(strip_tags($ruolo));
         
+        //cifratura della password
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":password_hash", $password_hash);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":cognome", $cognome);
+        $stmt->bindParam(":ruolo", $ruolo);
+        
+        if(empty($matricola)) {
+            $matricola = null;
+        }
+        $stmt->bindParam(":matricola", $matricola);
+
+        //esequzione query
+        try {
+            if($stmt->execute()) {
+                return true;
+            }
+        } catch(PDOException $e) {
+            return false;
+        }
+        return false;       
     }
 
     //effettua il login dell utente
