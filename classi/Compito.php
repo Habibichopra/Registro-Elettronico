@@ -133,7 +133,32 @@ class Compito {
 
     //compiti in scadenza nei prossimi giorni
     public function getCompitiProssimi($giorni = 7, $studente_id = null) {
-    
+        if ($studente_id) {
+            //seleziono compiti dove lo studente è iscritto e la data è futura ma entro X giorni
+            $query = "SELECT t.*, c.nome_corso, c.codice_corso 
+                      FROM " . $this->nome_tabella . " t
+                      JOIN " . $this->tabella_corsi . " c ON t.corso_id = c.id
+                      JOIN " . $this->tabella_iscrizioni . " i ON c.id = i.corso_id
+                      WHERE i.studente_id = :sid 
+                      AND t.data_scadenza BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL :giorni DAY)
+                      ORDER BY t.data_scadenza ASC";
+        } else {
+            $query = "SELECT t.*, c.nome_corso 
+                      FROM " . $this->nome_tabella . " t
+                      JOIN " . $this->tabella_corsi . " c ON t.corso_id = c.id
+                      WHERE t.data_scadenza BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL :giorni DAY)
+                      ORDER BY t.data_scadenza ASC";
+        }
+
+        $stmt = $this->conn->prepare($query);
+        
+        $stmt->bindParam(":giorni", $giorni);
+        if ($studente_id) {
+            $stmt->bindParam(":sid", $studente_id);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>
