@@ -60,7 +60,15 @@ class User {
 
     //elimino utente in base al id
     public function deleteUser($id) {
+        $query = "DELETE FROM " . $this->nome_tabella . " WHERE id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
 
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
 
