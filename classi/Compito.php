@@ -88,7 +88,16 @@ class Compito {
 
     //compito in base al id
     public function getCompitoById($id) {
-    
+        $query = "SELECT t.*, c.nome_corso 
+                  FROM " . $this->nome_tabella . " t
+                  JOIN " . $this->tabella_corsi . " c ON t.corso_id = c.id
+                  WHERE t.id = ? LIMIT 1";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);  
     }
 
     //compiti in base al corso
