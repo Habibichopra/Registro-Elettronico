@@ -115,7 +115,20 @@ class Compito {
 
     //trovare compiti scaduti
     public function getCompitiScaduti($corso_id = null) {
-
+        $query = "SELECT * FROM " . $this->nome_tabella . " WHERE data_scadenza < NOW()";
+        
+        if ($corso_id) {
+            $query .= " AND corso_id = :cid";
+        }
+        
+        $query .= " ORDER BY data_scadenza DESC";
+        $stmt = $this->conn->prepare($query);
+        if ($corso_id) {
+            $stmt->bindParam(":cid", $corso_id);
+        }
+        
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //compiti in scadenza nei prossimi giorni
