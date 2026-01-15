@@ -34,7 +34,23 @@ class Voto{
 
     //calcola media voti studente
     public function calcolaMedia($studente_id, $corso_id = null) {
-    
+        $query = "SELECT AVG(voto) as media FROM " . $this->nome_tabella . " WHERE studente_id = :sid";
+
+        if ($corso_id) {
+            $query .= " AND corso_id = :cid";
+        }
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":sid", $studente_id);
+        
+        if ($corso_id) {
+            $stmt->bindParam(":cid", $corso_id);
+        }
+
+        $stmt->execute();
+        $riga = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $riga['media'] ? round($riga['media'], 2) : 0;
     }
 
     //statistiche del corso
