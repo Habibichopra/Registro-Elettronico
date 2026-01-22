@@ -53,7 +53,24 @@ class Consegna {
 
     //valutazione del compito da parte del professore
     public function valutaConsegna($consegna_id, $voto, $feedback) {
+        $query = "UPDATE " . $this->nome_tabella . " SET 
+                    voto = :voto, 
+                    feedback_professore = :feedback, 
+                    stato = 'valutato' 
+                  WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
 
+        $feedback = htmlspecialchars(strip_tags($feedback));
+        
+        $stmt->bindParam(":voto", $voto);
+        $stmt->bindParam(":feedback", $feedback);
+        $stmt->bindParam(":id", $consegna_id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //get consegna in base al id
