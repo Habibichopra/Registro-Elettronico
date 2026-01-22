@@ -89,7 +89,16 @@ class Corso {
 
     //ottieni corso con id
     public function getCorsoById($id) {
-    
+        $query = "SELECT c.*, u.nome as prof_nome, u.cognome as prof_cognome 
+                  FROM " . $this->nome_tabella . " c
+                  LEFT JOIN " . $this->tabella_users . " u ON c.professore_id = u.id
+                  WHERE c.id = ? LIMIT 1";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //get di tutti i corsi
