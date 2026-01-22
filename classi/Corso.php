@@ -164,7 +164,15 @@ class Corso {
 
     //rimuovi iscrizione
     public function rimuoviIscrizione($iscrizione_id) {
-
+        $query = "DELETE FROM " . $this->tabella_iscrizioni . " WHERE id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $iscrizione_id);
+        
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
 }
