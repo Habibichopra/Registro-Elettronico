@@ -148,7 +148,16 @@ class Consegna {
 
     //download del file della consegna
     public function downloadConsegna($id) {
-
+        $query = "SELECT file_consegna FROM " . $this->nome_tabella . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        
+        $riga = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($riga) {
+            return $riga['file_consegna'];
+        }
+        return null;
     }
 }
 
