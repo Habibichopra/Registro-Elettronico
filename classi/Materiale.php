@@ -81,7 +81,15 @@ class Materiale {
 
     //ottenere tutti i materiali di un corso
     public function getMaterialiByCorso($corso_id) {
+        $query = "SELECT * FROM " . $this->nome_tabella . " 
+                  WHERE corso_id = ? 
+                  ORDER BY data_upload DESC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $corso_id);
+        $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //download materiale
