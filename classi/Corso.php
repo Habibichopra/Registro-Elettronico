@@ -145,7 +145,21 @@ class Corso {
 
     //iscrizione studente al corso
     public function iscriviStudente($studente_id, $corso_id) {
-    
+        $query = "INSERT INTO " . $this->tabella_iscrizioni . " 
+                  (studente_id, corso_id, status) VALUES (:sid, :cid, 'attivo')";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":sid", $studente_id);
+        $stmt->bindParam(":cid", $corso_id);
+        
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+        return false;
     }
 
     //rimuovi iscrizione
