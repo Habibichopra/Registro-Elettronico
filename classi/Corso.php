@@ -103,7 +103,15 @@ class Corso {
 
     //get di tutti i corsi
     public function getAllCorsi() {
-    
+        $query = "SELECT c.*, u.nome as prof_nome, u.cognome as prof_cognome 
+                  FROM " . $this->nome_tabella . " c
+                  LEFT JOIN " . $this->tabella_users . " u ON c.professore_id = u.id
+                  ORDER BY c.nome_corso ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }   
 
     //get corsi in base al professorei
