@@ -90,7 +90,17 @@ class Consegna {
 
     //lista delle consegne per un compito specifico
     public function getConsegneByCompito($compito_id) {
+        $query = "SELECT c.*, u.nome, u.cognome, u.matricola 
+                  FROM " . $this->nome_tabella . " c
+                  JOIN " . $this->tabella_users . " u ON c.studente_id = u.id
+                  WHERE c.compito_id = ? 
+                  ORDER BY u.cognome ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $compito_id);
+        $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //lista delle consegne per uno studente specifico
