@@ -105,7 +105,18 @@ class Consegna {
 
     //lista delle consegne per uno studente specifico
     public function getConsegneByStudente($studente_id) {
+        $query = "SELECT c.*, t.titolo, t.data_scadenza, k.nome_corso 
+                  FROM " . $this->nome_tabella . " c
+                  JOIN " . $this->tabella_compiti . " t ON c.compito_id = t.id
+                  JOIN " . $this->tabella_corsi . " k ON t.corso_id = k.id
+                  WHERE c.studente_id = ? 
+                  ORDER BY c.data_consegna DESC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $studente_id);
+        $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
 
     //controllo se la consegna è in ritardo
