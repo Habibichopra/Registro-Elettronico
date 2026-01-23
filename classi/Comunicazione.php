@@ -64,7 +64,15 @@ class Comunicazione {
 
     //sergnare una comunicazione come letta
     public function segnaComeLetto($comunicazione_id) {
-
+        $query = "UPDATE " . $this->nome_tabella . " SET letto = 1 WHERE id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $comunicazione_id);
+        
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //eliminare una comunicazione
