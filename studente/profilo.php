@@ -48,5 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $utente = $userObj->getUserById($user_id);
 
+define('PAGE_TITLE', 'Il mio Profilo');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
 
