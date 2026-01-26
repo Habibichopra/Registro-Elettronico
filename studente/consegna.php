@@ -113,10 +113,18 @@ include '../inclusi/nav.php';
                         <a href="<?php echo BASE_URL . $task['allegato']; ?>" target="_blank" class="btn-testo">Scarica File</a>
                     </div>
                 <?php endif; ?>
-
-
-
             </div>
+        </div>
+
+        <div>
+            <?php if ($messaggio): ?>
+                <div class="alert alert-successo"><?php echo $messaggio; ?></div>
+            <?php endif; ?>
+            
+            <?php if ($errore): ?>
+                <div class="alert alert-errore"><?php echo $errore; ?></div>
+            <?php endif; ?>
+
         </div>
     </div>
 </div>
