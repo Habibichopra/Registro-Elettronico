@@ -32,4 +32,8 @@ foreach ($lista_voti as $v) {
     }
 }
 
+define('PAGE_TITLE', 'Il mio Libretto');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
+
 ?>
