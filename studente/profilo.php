@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'password' => !empty($password) ? $password : null // Se vuota, non cambia
         ];
 
-        if ($userObj->updateProfile($user_id, $data)) {
+        if ($userObj->updateProfile($user_id, $dati)) {
             $messaggio = "Profilo aggiornato con successo!";
             $_SESSION['nome_completo'] = $nome . " " . $cognome;
         } else {
@@ -45,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$utente = $userObj->getUserById($user_id);
 
 ?>
 
