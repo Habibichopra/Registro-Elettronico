@@ -212,7 +212,6 @@ ul {
     background-color: #f1f2f6;
 }
 
-/* Badge (Etichette colorate) */
 .etichetta-codice, .etichetta-codice- {
     background: #e8eaed;
     color: #555;
@@ -237,6 +236,55 @@ ul {
 .etichetta-voto.alto { background-color: var(--colore-successo); }
 .etichetta-voto.medio { background-color: var(--colore-allerta); color: #333; }
 .etichetta-voto.basso { background-color: var(--colore-pericolo); }
+
+/* stile per i bottoni */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-blocco {
+    display: block;
+    width: 100%;
+}
+
+.btn- {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+.btn-primario { background: var(--colore-primario); color: #fff; }
+.btn-primario:hover { background: #2980b9; color: #fff; }
+
+.btn-avvenuto { background: var(--colore-successo); color: #fff; }
+.btn-avvenuto:hover { background: #27ae60; color: #fff; }
+
+.btn-pericolo { background: var(--colore-pericolo); color: #fff; }
+.btn-pericolo:hover { background: #c0392b; color: #fff; }
+
+.btn-contorno {
+    background: transparent;
+    border: 1px solid var(--colore-primario);
+    color: var(--colore-primario);
+}
+.btn-contorno:hover {
+    background: var(--colore-primario);
+    color: #fff;
+}
+
+.btn-testo {
+    background: none;
+    color: var(--colore-primario);
+    padding: 0;
+    font-size: 0.9rem;
+}
+.btn-testo:hover { text-decoration: underline; }
 
 
 /* style per comonenti specifici */
