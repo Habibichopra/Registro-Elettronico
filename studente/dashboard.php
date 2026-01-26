@@ -21,6 +21,9 @@ $ultimi_voti = array_slice($tutti_voti, 0, 5);
 
 $media_voti = $votoObj->calcolaMedia($studente_id);
 
+$corsi_attivi = $corsoObj->getCorsiByStudente($studente_id);
+$num_corsi = count($corsi_attivi);
+
 define('PAGE_TITLE', 'Dashboard Studente');
 include '../inclusi/header.php';
 include '../inclusi/nav.php';
