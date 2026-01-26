@@ -149,9 +149,6 @@ include '../inclusi/nav.php';
             </div>
         </section>
     </div>
-
-    
-
 </div>
 
 <?php include '../inclusi/footer.php'; ?>  
