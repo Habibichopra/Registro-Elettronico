@@ -211,6 +211,21 @@ include '../inclusi/nav.php';
         form.style.display = "none";
     }
     }
+
+    function togglemessaggio(id) {
+        var body = document.getElementById('msg-body-' + id);
+        var card = body.closest('.messaggio-card');
+        
+
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            card.classList.remove('expanded');
+        } else {
+    
+            body.style.display = "block";
+            card.classList.add('expanded');
+        }
+    }
 </script>
 
 <?php include '../inclusi/footer.php'; ?>
