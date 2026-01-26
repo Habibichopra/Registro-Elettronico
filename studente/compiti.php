@@ -65,6 +65,16 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+
+<div class="container layout-contenuto">
+    <header class="header-pagina">
+        <h1><i class="fas fa-tasks"></i> Gestione Compiti</h1>
+        <p>Visualizza le scadenze e invia i tuoi elaborati.</p>
+    </header>
+
+    
+</div>
+
 <?php 
 include '../inclusi/footer.php'; 
 ?>
