@@ -73,7 +73,18 @@ include '../inclusi/nav.php';
     </header>
 
     <section class="mb-5">
-
+        <h2><i class="fas fa-hourglass-half"></i> In Scadenza</h2>
+        
+        <?php if (count($lista_da_fare) > 0): ?>
+            <div class="griglia-task">
+                <?php foreach ($lista_da_fare as $task): ?>
+                    <?php 
+                        $scadenza = new DateTime($task['data_scadenza']);
+                        $oggi = new DateTime();
+                        $giorni_rimasti = $oggi->diff($scadenza)->days;
+                        $is_urgente = ($giorni_rimasti < 3);
+                    ?>
+                    
     </section>
 
 </div>
