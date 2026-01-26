@@ -378,3 +378,32 @@ ul {
     font-size: 0.9rem;
     text-align: center;
 }
+
+
+@media (max-width: 768px) {
+    
+    /* Griglie diventano colonna singola */
+    .dashboard-main-griglia, .layout-diviso {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    .riga { flex-direction: column; gap: 0; }
+    
+    .flex-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .flex-header div, .flex-header a, .flex-header button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .larghezza-piena-mobile {
+        grid-column: 1 / -1;
+    }
+}
