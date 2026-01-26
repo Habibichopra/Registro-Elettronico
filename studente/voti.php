@@ -63,7 +63,10 @@ include '../inclusi/nav.php';
             <a href="<?php echo $download_link; ?>" download>Clicca qui per scaricare la tua pagella.</a>
         </div>
     <?php endif; ?>
+    
+    <div class="griglia-statistiche mb-5">
 
+    </div>
 
 
 
