@@ -162,7 +162,7 @@ include '../inclusi/nav.php';
                                         echo '<span class="segno-stato stato-pericolo">In Ritardo</span>';
                                         break;
                                     case 'mancante':
-                                        echo '<span class="segno-stato">Non Consegnato</span>';
+                                        echo '<span class="segno-stato" stato-scaduto>Non Consegnato</span>';
                                         break;
                                 }
                                 ?>
