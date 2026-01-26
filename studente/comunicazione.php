@@ -87,7 +87,38 @@ include '../inclusi/nav.php';
             <button class="btn-icona" onclick="apriChiudForm()"><i class="fas fa-times"></i></button>
         </div>
         <div class="body-scheda">
-            
+            <form method="POST" action="comunicazioni.php">
+                <input type="hidden" name="action" value="invia">
+
+                <div class="riga">
+                    <div class="colonna-meta">
+                        <div class="gruppo-form">
+                            <label>Destinatario (Professore) *</label>
+                            <select name="destinatario_id" class="controllo-form" required>
+                                <option value="">-- Seleziona Docente --</option>
+                                <?php foreach ($professori as $prof): ?>
+                                    <option value="<?php echo $prof['id']; ?>">
+                                        <?php echo htmlspecialchars($prof['cognome'] . ' ' . $prof['nome']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="colonna-meta">
+                        <div class="gruppo-form">
+                            <label>Corso Correlato (Opzionale)</label>
+                            <select name="corso_id" class="controllo-form">
+                                <option value="">-- Nessun Corso --</option>
+                                <?php foreach ($miei_corsi as $c): ?>
+                                    <option value="<?php echo $c['id']; ?>">
+                                        <?php echo htmlspecialchars($c['nome_corso']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
         </div>
 
 
