@@ -128,3 +128,12 @@
     text-align: center;
     border-radius: 8px;
 }
+
+.stato-attesa {
+    background-color: rgba(189, 195, 199, 0.15); 
+    color: #7f8c8d; 
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
