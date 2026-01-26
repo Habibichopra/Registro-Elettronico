@@ -13,4 +13,8 @@ $studente_id = $_SESSION['user_id'];
 $compitoObj = new Compito();
 $votoObj = new Voto();
 $corsoObj = new Corso();
+
+define('PAGE_TITLE', 'Dashboard Studente');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
