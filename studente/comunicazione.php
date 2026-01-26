@@ -43,7 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-
+    if (isset($_POST['action']) && $_POST['action'] === 'elimina') {
+        $msg_id = $_POST['messaggio_id'];
+        if($comunicazioneObj->deleteComunicazione($msg_id)) {
+            $messaggio_feedback = "Messaggio eliminato.";
+        }
+    }
 }
 
 ?>
