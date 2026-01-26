@@ -13,4 +13,7 @@ $studente_id = $_SESSION['user_id'];
 $corsoObj = new Corso();
 $compitoObj = new Compito();
 $consegnaObj = new Consegna();
+
+$corsi = $corsoObj->getCorsiByStudente($studente_id);
+$tutte_consegne = $consegnaObj->getConsegneByStudente($studente_id);
 ?>
