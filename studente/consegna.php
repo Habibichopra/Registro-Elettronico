@@ -174,6 +174,29 @@ include '../inclusi/nav.php';
                 <h2><i class="fas fa-times-circle"></i> Tempo Scaduto</h2>
                 <p>La data di scadenza per questo compito è passata. Non è più possibile inviare elaborati.</p>
             </div>
+
+        <?php else: ?>
+            <div>
+                <h2><i class="fas fa-cloud-upload-alt"></i> Effettua Consegna</h2>
+                <p class="mb-3">Carica il tuo file entro il <strong><?php echo $scadenza->format('d/m/Y H:i'); ?></strong>.</p>
+                
+                <form action="consegna.php?id=<?php echo $compito_id; ?>" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="gruppo-form">
+                        <label for="file_consegna">Seleziona File (PDF, DOC, ZIP - Max 10MB)</label>
+                        <input type="file" name="file_consegna" id="file_consegna" required class="controllo-form-file">
+                    </div>
+
+                    <div class="gruppo-form">
+                        <label for="note">Note per il docente (opzionale)</label>
+                        <textarea name="note" id="note" rows="4" class="controllo-form" placeholder="Scrivi qui eventuali commenti..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-avvenuto btn-blocco">Invia Compito</button>
+                </form>
+            </div>
+        <?php endif; ?>
+        </div>
     </div>
 </div>
 
