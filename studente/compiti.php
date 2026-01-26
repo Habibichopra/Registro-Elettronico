@@ -24,4 +24,31 @@ foreach ($tutte_consegne as $c) {
 
 $lista_da_fare = [];
 $lista_storico = [];
+
+foreach ($corsi as $corso) {
+    $compiti_corso = $compitoObj->getCompitiByCorso($corso['id']);
+
+    foreach ($compiti_corso as $compito) {
+
+        $compito['nome_corso'] = $corso['nome_corso'];
+        $compito['codice_corso'] = $corso['codice_corso'];
+
+        $consegna_effettuata = isset($mappa_consegne[$compito['id']]) ? $mappa_consegne[$compito['id']] : null;
+        
+        $data_scadenza = new DateTime($compito['data_scadenza']);
+        $oggi = new DateTime();
+
+        if ($consegna_effettuata) {
+            $compito['stato_utente'] = $consegna_effettuata['stato'];
+            $compito['dati_consegna'] = $consegna_effettuata;
+            $lista_storico[] = $compito;
+        } elseif ($oggi > $data_scadenza) {
+            $compito['stato_utente'] = 'mancante';
+            $lista_storico[] = $compito;
+        } else {
+            $compito['stato_utente'] = 'da_fare';
+            $lista_da_fare[] = $compito;
+        }
+    }
+}
 ?>
