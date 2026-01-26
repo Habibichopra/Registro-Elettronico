@@ -179,6 +179,8 @@ include '../inclusi/nav.php';
             $voti_conseguiti[] = $v['voto'];
         }
     ?>
+
+    const contestoGrafico = document.getElementById('votiChart').getContext('2d');
 </script>
 
 <?php 
