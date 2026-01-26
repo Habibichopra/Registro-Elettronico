@@ -73,7 +73,11 @@ ul {
     gap: 10px;
 }
 
-/* 2 dashboard e griglie */
+/* 2 dashboard e griglie e layout */
+.layout-contenuto {
+    padding: 40px 20px;
+}
+
 .griglia-statistiche {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
