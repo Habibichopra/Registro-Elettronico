@@ -144,6 +144,17 @@ include '../inclusi/nav.php';
                     <p>"<?php echo htmlspecialchars($consegna_esistente['note_studente']); ?>"</p>
                 <?php endif; ?>
             </div>
+
+            <?php if ($consegna_esistente['voto'] !== null): ?>
+            <div class="sezione-voto">
+                <div class="cerchio-voto">
+                    <?php echo $consegna_esistente['voto']; ?>
+                </div>
+                <div class="info-voto">
+                    <span>su <?php echo $task['punti_max']; ?> punti</span>
+                    <h3>Valutazione Finale</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>
