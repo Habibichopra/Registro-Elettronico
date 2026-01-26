@@ -26,5 +26,12 @@ if (!$task) {
 $consegne_studente = $consegnaObj->getConsegneByStudente($studente_id);
 $consegna_esistente = null;
 
+foreach ($consegne_studente as $c) {
+    if ($c['compito_id'] == $compito_id) {
+        $consegna_esistente = $c;
+        break;
+    }
+}
+
 
 ?>
