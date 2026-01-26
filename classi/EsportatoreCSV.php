@@ -36,6 +36,11 @@ class EsportatoreCSV  {
 
     }
 
+    //importa studenti da un file csv
+    public function importaStudentiDaCSV($file_input) {
+
+    }
+
 
 }
 
