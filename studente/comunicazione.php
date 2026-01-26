@@ -36,6 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    if (isset($_POST['action']) && $_POST['action'] === 'segna_letto') {
+        $msg_id = $_POST['messaggio_id'];
+        $comunicazioneObj->marcaComeLetto($msg_id);
+        header("Location: comunicazioni.php");
+        exit;
+    }
+
 
 }
 
