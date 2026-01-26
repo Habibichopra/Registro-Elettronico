@@ -53,3 +53,6 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+
+<?php include '../inclusi/footer.php'; ?>
+
