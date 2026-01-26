@@ -49,3 +49,6 @@ define('PAGE_TITLE', 'I Miei Corsi');
 include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
+
+
+<?php include '../inclusi/footer.php'; ?>  
