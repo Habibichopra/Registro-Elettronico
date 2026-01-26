@@ -53,6 +53,15 @@ include '../inclusi/nav.php';
             </div>
         </div>
 
+        <div class="scheda-statistiche <?php echo (count($compiti_scadenza) > 0) ? 'urgente' : 'blu'; ?>">
+            <div class="icona-statistiche"><i class="fas fa-tasks"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo count($compiti_scadenza); ?></h3>
+                <p>Compiti in scadenza (7gg)</p>
+            </div>
+        </div>
+
+
     </div>
     
 
