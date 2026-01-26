@@ -7,5 +7,5 @@ include 'inclusi/header.php';
 
 
 <?php
-include 'includes/footer.php';
+include 'inclusi/footer.php';
 ?>
