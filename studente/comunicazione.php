@@ -191,11 +191,15 @@ include '../inclusi/nav.php';
                             </form>
                         </div>
                     </div>
-
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-
+            <div class="nessun-contenuto">
+                <i class="far fa-envelope-open"></i>
+                <p>Nessun messaggio ricevuto.</p>
+            </div>
+        <?php endif; ?>
+    </section>
 </div>
 
 <script>
