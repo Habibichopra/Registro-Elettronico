@@ -17,4 +17,8 @@ $corsoObj = new Corso();
 $messaggio_feedback = '';
 $errore_feedback = '';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+}
+
 ?>
