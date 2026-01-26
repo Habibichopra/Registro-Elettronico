@@ -53,6 +53,14 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+<div class="container layout-contenuto">
+
+    <header class="header-pagina">
+        <h1><i class="fas fa-user-cog"></i> Profilo Utente</h1>
+        <p>Gestisci le tue informazioni personali e di accesso.</p>
+    </header>
+</div>
+
 
 <?php include '../inclusi/footer.php'; ?>
 
