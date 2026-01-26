@@ -16,6 +16,16 @@ class EsportatoreCSV  {
         }
     }
 
+    //metodo per aprire un file csv
+    private function apriFileCSV($nomeFile) {
+
+    }
+
+    //Genera CSV con i voti di uno studente specifico
+    public function exportVotiStudente($studente_id) {
+
+    }
+
 
 }
 
