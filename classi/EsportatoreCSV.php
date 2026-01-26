@@ -82,7 +82,31 @@ class EsportatoreCSV  {
 
     //genera statistcihe corso con csv
     public function exportStatisticheCorso($corso_id) {
+        $query = "SELECT 
+                    AVG(voto) as media,
+                    MAX(voto) as voto_massimo,
+                    MIN(voto) as voto_minimo,
+                    COUNT(*) as numero_voti
+                  FROM voti WHERE corso_id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $corso_id);
+        $stmt->execute();
+        $statistiche = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $nomeFile = "statistiche_corso_" . $corso_id . "_" . time() . ".csv";
+        $file = $this->apriFileCSV($nomeFile);
+
+        fputcsv($file, array('Indicatore', 'Valore'));
+        
+        // Scriviamo i dati in verticale
+        fputcsv($file, array('Media Voti', round($statistiche['media'], 2)));
+        fputcsv($file, array('Voto Più Alto', $statistiche['voto_massimo']));
+        fputcsv($file, array('Voto Più Basso', $statistiche['voto_minimo']));
+        fputcsv($file, array('Totale Valutazioni', $statistiche['numero_voti']));
+
+        fclose($file);
+        return $nomeFile;
     }
 
     //importa studenti da un file csv
