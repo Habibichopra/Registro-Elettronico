@@ -18,7 +18,12 @@ class EsportatoreCSV  {
 
     //metodo per aprire un file csv
     private function apriFileCSV($nomeFile) {
-
+        $percorsoFile = $this->export_dir . $nomeFile;
+        $file = fopen($percorsoFile, 'w');
+        
+        fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+        
+        return $file;
     }
 
     //Genera CSV con i voti di uno studente specifico
