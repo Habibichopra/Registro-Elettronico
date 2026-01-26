@@ -62,4 +62,23 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+<div class="container layout-contenuto">
+    
+    <header class="header-pagina flex-header">
+        <div>
+            <h1><i class="fas fa-envelope"></i> Messaggi</h1>
+            <p>Comunica con i docenti e ricevi avvisi importanti.</p>
+        </div>
+        <button class="btn btn-primario" onclick="apriChiudiForm()">
+            <i class="fas fa-pen"></i> Scrivi Messaggio
+        </button>
+    </header>
+</div>
+
+<script>
+function apriChiudiForm() {
+    
+}
+</script>
+
 <?php include '../inclusi/footer.php'; ?>
