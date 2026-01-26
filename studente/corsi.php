@@ -51,6 +51,11 @@ include '../inclusi/nav.php';
 ?>
 
 <div class="container layout-contenuto">
+    
+    <header class="header-pagina">
+        <h1><i class="fas fa-book-open"></i> I Miei Corsi</h1>
+        <p>Gestisci le tue iscrizioni e accedi ai materiali didattici.</p>
+    </header>
 
 </div>
 
