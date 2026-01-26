@@ -122,6 +122,76 @@ include '../inclusi/nav.php';
 
     <hr class="separatore">
 
+    <section>
+        <h2><i class="fas fa-history"></i> Storico Compiti</h2>
+        
+        <div class="tabella-responsive">
+            <table class="tabella-semplice">
+                <thead>
+                    <tr>
+                        <th>Corso</th>
+                        <th>Compito</th>
+                        <th>Scadenza</th>
+                        <th>Stato</th>
+                        <th>Voto</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($lista_storico as $task): ?>
+                        <tr>
+                            <td>
+                                <span class="etichetta-codice-sm"><?php echo htmlspecialchars($task['codice_corso']); ?></span>
+                            </td>
+                            <td>
+                                <strong><?php echo htmlspecialchars($task['titolo']); ?></strong>
+                            </td>
+                            <td>
+                                <?php echo date('d/m/Y', strtotime($task['data_scadenza'])); ?>
+                            </td>
+                            <td>
+                                <?php
+                                switch ($task['stato_utente']) {
+                                    case 'valutato':
+                                        echo '<span class="segno-stato stato-avvenuto">Valutato</span>';
+                                        break;
+                                    case 'consegnato':
+                                        echo '<span class="segno-stato stato-allerta">In attesa</span>';
+                                        break;
+                                    case 'in_ritardo':
+                                        echo '<span class="segno-stato stato-pericolo">In Ritardo</span>';
+                                        break;
+                                    case 'mancante':
+                                        echo '<span class="segno-stato">Non Consegnato</span>';
+                                        break;
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                if (isset($task['dati_consegna']['voto']) && $task['dati_consegna']['voto'] !== null) {
+                                    echo "<strong>" . $task['dati_consegna']['voto'] . "</strong>/" . $task['punti_max'];
+                                } else {
+                                    echo "-";
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php if ($task['stato_utente'] == 'mancante'): ?>
+                                    <span class="testo-disattivato text-sm">Chiuso</span>
+                                <?php else: ?>
+                                    <a href="consegna.php?id=<?php echo $task['id']; ?>" class="btn-testo">
+                                        Dettagli &rarr;
+                                    </a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
 </div>
 
 <?php 
