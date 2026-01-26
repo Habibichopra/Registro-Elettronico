@@ -67,3 +67,5 @@ define('PAGE_TITLE', 'Materiale Didattico');
 include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
+
+<?php include '../inclusi/footer.php'; ?>
