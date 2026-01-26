@@ -111,10 +111,71 @@ class EsportatoreCSV  {
 
     //importa studenti da un file csv
     public function importaStudentiDaCSV($file_input) {
+        if (!is_uploaded_file($file_input['tmp_name'])) {
+            return ["successo" => false, "messaggio" => "Nessun file caricato."];
+        }
 
-    }
+        $gestoreFile  = fopen($file_input['tmp_name'], "r");
+        if ($gestoreFile  === FALSE) {
+            return ["successo" => false, "messaggio" => "Impossibile leggere il file."];
+        }
+
+        $numeroImportati  = 0;
+        $errori = [];
+        $numeroRiga = 0;
 
 
+        $sql = "INSERT INTO users (username, password_hash, email, nome, cognome, matricola, ruolo) 
+                VALUES (:user, :pass, :email, :nome, :cognome, :matricola, 'studente')";
+        $stmt = $this->conn->prepare($sql);
+
+        while (($dati = fgetcsv($gestoreFile, 1000, ",")) !== FALSE) {
+            $numeroRiga++;
+            
+            if ($numeroRiga == 1 && strtolower($dati[0]) == 'username') {
+                continue; 
+            }
+
+            if (count($dati) < 6) {
+                $errori[] = "Riga $numeroRiga: Colonne insufficienti.";
+                continue;
+            }
+
+            $username = trim($dati[0]);
+            $passwordBase = trim($dati[1]);
+            $email = trim($dati[2]);
+            $nome = trim($dati[3]);
+            $cognome = trim($dati[4]);
+            $matricola = trim($dati[5]);
+
+            $password_hash = password_hash($passwordBase, PASSWORD_BCRYPT);
+
+            try {
+                $stmt->bindParam(':user', $username);
+                $stmt->bindParam(':pass', $password_hash);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':nome', $nome);
+                $stmt->bindParam(':cognome', $cognome);
+                $stmt->bindParam(':matricola', $matricola);
+
+                if ($stmt->execute()) {
+                    $numeroImportati++;
+                }
+            } catch (PDOException $e) {
+                $errori[] = "Riga $numeroRiga ($username): Errore inserimento (probabile duplicato).";
+            }
+        }
+
+        fclose($gestoreFile);
+
+        return [
+            "successo" => true,
+            "importato" => $numeroImportati,
+            "errori" => $errori
+        ];
+    } 
 }
+
+
 
 ?>
