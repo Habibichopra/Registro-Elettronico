@@ -35,4 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
 $tutti_corsi = $corsoObj->getAllCorsi();
+
+$ids_miei_corsi = array_column($miei_corsi, 'id');
+$corsi_disponibili = [];
+
+foreach ($tutti_corsi as $corso) {
+    if (!in_array($corso['id'], $ids_miei_corsi)) {
+        $corsi_disponibili[] = $corso;
+    }
+}
 ?>
