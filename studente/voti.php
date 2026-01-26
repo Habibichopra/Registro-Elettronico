@@ -146,12 +146,25 @@ include '../inclusi/nav.php';
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>      
+                    </div>
+                <?php else: ?>
+                    <div class="nessun-contenuto">
+                        <p>Non ci sono ancora voti registrati.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </section>
 
+        <section class="scheda larghezza-piena-mobile">
+            <div class="scheda-header">
+                <h2>Andamento</h2>
+            </div>
+            <div class="body-scheda">
+                <canvas id="votiChart"></canvas>
+            </div>
+        </section>
+        
     </div>
-
-
-
 </div>
 
 
