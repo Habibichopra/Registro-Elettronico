@@ -86,6 +86,9 @@ include '../inclusi/nav.php';
             <h2>Nuovo Messaggio</h2>
             <button class="btn-icona" onclick="apriChiudForm()"><i class="fas fa-times"></i></button>
         </div>
+        <div class="body-scheda">
+            
+        </div>
 
 
     </div>
