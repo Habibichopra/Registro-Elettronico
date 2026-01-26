@@ -20,6 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $conf_password = $_POST['conf_password'];
 
+        
+    if (empty($nome) || empty($cognome) || empty($email)) {
+        $errore = "Nome, Cognome ed Email sono obbligatori.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errore = "Formato email non valido.";
+    } elseif (!empty($password) && $password !== $conf_password) {
+        $errore = "Le nuove password non coincidono.";
+    } elseif (!empty($password) && strlen($password) < 8) {
+         $errore = "La password deve essere di almeno 8 caratteri.";
+    } else {
+
 }
 
 ?>
