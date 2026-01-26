@@ -1,0 +1,12 @@
+/* 1.header dashboard */
+
+.dashboard-header h1 {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.sottotitolo {
+    color: var(--testo-disattivato);
+    font-size: 1.1rem;
+    margin-top: -5px;
+}
