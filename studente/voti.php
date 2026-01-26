@@ -81,7 +81,14 @@ include '../inclusi/nav.php';
             </div>
         </div>
 
-        
+        <div class="scheda-statistiche.viola">
+            <div class="icona-statistiche"><i class="fas fa-list-ol"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo count($lista_voti); ?></h3>
+                <p>Valutazioni Totali</p>
+            </div>
+        </div>
+
     </div>
 
 
