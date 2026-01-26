@@ -102,5 +102,24 @@ include '../inclusi/nav.php';
                 </div>
             </header>
 
+            <div>
+                <h3>Descrizione</h3>
+                <p><?php echo nl2br(htmlspecialchars($task['descrizione'])); ?></p>
+                
+                <?php if (!empty($task['allegato'])): ?>
+                    <div>
+                        <i class="fas fa-paperclip"></i>
+                        <span>Allegato del professore:</span>
+                        <a href="<?php echo BASE_URL . $task['allegato']; ?>" target="_blank" class="btn-testo">Scarica File</a>
+                    </div>
+                <?php endif; ?>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php include '../inclusi/footer.php'; ?>
