@@ -44,4 +44,8 @@ foreach ($tutti_corsi as $corso) {
         $corsi_disponibili[] = $corso;
     }
 }
+
+define('PAGE_TITLE', 'I Miei Corsi');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
