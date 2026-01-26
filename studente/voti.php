@@ -15,6 +15,11 @@ $csvExporter = new EsportatoreCSV();
 $download_link = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
     
+    $filename = $csvExporter->exportVotiStudente($studente_id);
+    if ($filename) {
+        // compit: creo il link per il download del file CSV
+        $download_link = BASE_URL . 'esportazioni/' . $filename;
+    }
 }
 
 ?>
