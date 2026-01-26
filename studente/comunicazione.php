@@ -19,6 +19,24 @@ $errore_feedback = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    if (isset($_POST['action']) && $_POST['action'] === 'invia') {
+        $destinatario_id = $_POST['destinatario_id'];
+        $corso_id = !empty($_POST['corso_id']) ? $_POST['corso_id'] : null;
+        $oggetto = trim($_POST['oggetto']);
+        $messaggio = trim($_POST['messaggio']);
+
+        if (!empty($destinatario_id) && !empty($oggetto) && !empty($messaggio)) {
+            if ($comunicazioneObj->inviaComunicazione($studente_id, $destinatario_id, $corso_id, $oggetto, $messaggio)) {
+                $messaggio_feedback = "Messaggio inviato con successo!";
+            } else {
+                $errore_feedback = "errore durante l'invio.";
+            }
+        } else {
+            $errore_feedback = "Compila tutti i campi obbligatori.";
+        }
+    }
+
+
 }
 
 ?>
