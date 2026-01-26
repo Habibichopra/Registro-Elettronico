@@ -155,6 +155,18 @@ include '../inclusi/nav.php';
                     <h3>Valutazione Finale</h3>
                 </div>
             </div>
+
+            <?php if(!empty($consegna_esistente['feedback_professore'])): ?>
+                <div class="sezione-feedback">
+                    <h4><i class="fas fa-comment-dots"></i> Feedback del Docente:</h4>
+                    <p><?php echo nl2br(htmlspecialchars($consegna_esistente['feedback_professore'])); ?></p>
+                </div>
+            <?php endif; ?>
+            <?php else: ?>
+                <div class="alert alert-info mt-3">
+                    Il docente non ha ancora valutato il tuo compito.
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
