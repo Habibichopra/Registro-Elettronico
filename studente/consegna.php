@@ -74,4 +74,7 @@ $scadenza = new DateTime($task['data_scadenza']);
 $oggi = new DateTime();
 $is_scaduto = ($oggi > $scadenza);
 
+define('PAGE_TITLE', 'Dettaglio Compito');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
