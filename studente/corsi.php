@@ -139,7 +139,7 @@ include '../inclusi/nav.php';
                                 <td>
                                     <?php echo htmlspecialchars($corso['nome_corso']); ?>
                                     <br>
-                                    <small class="testo-disattivato"><?php echo substr($corso['descrizione'], 0, 50); ?>...</small>
+                                    <small class="testo-disattivato"><?php echo substr(htmlspecialchars($corso['descrizione']), 0, 50); ?>...</small>
                                 </td>
                                 <td><?php echo htmlspecialchars($corso['prof_nome'] . ' ' . $corso['prof_cognome']); ?></td>
                                 <td><?php echo htmlspecialchars($corso['anno_accademico']); ?></td>
