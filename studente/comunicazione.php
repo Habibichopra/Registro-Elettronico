@@ -49,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messaggio_feedback = "Messaggio eliminato.";
         }
     }
+
+    
 }
 
 ?>
