@@ -9,4 +9,8 @@ require_once '../classes/Compito.php';
 require_once '../classes/Consegna.php';
 
 $studente_id = $_SESSION['user_id'];
+
+$corsoObj = new Corso();
+$compitoObj = new Compito();
+$consegnaObj = new Consegna();
 ?>
