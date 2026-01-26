@@ -16,6 +16,9 @@ $corsoObj = new Corso();
 
 $compiti_scadenza = $compitoObj->getCompitiProssimi(7, $studente_id);
 
+$tutti_voti = $votoObj->getVotiByStudente($studente_id);
+$ultimi_voti = array_slice($tutti_voti, 0, 5);
+
 define('PAGE_TITLE', 'Dashboard Studente');
 include '../inclusi/header.php';
 include '../inclusi/nav.php';
