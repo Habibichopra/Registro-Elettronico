@@ -82,15 +82,15 @@ include '../inclusi/nav.php';
 
                 <div class="lista-info-profilo">
                     <div class="info-item">
-                        <span class="eichetta">Matricola</span>
+                        <span class="etichetta">Matricola</span>
                         <span class="value etichetta-codice"><?php echo htmlspecialchars($utente['matricola']); ?></span>
                     </div>
                     <div class="info-item">
-                        <span class="eichetta">Username</span>
+                        <span class="etichetta">Username</span>
                         <span class="value">@<?php echo htmlspecialchars($utente['username']); ?></span>
                     </div>
                     <div class="info-item">
-                        <span class="eichetta">Iscritto dal</span>
+                        <span class="etichetta">Iscritto dal</span>
                         <span class="value"><?php echo date('d/m/Y', strtotime($utente['creato_il'])); ?></span>
                     </div>
                 </div>
