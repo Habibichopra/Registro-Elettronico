@@ -10,3 +10,34 @@
     font-size: 1.1rem;
     margin-top: -5px;
 }
+
+/* schede statistiche */
+.scheda-statistiche {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.scheda-statistiche:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Effetto sfumato decorativo nell'angolo */
+.scheda-statistiche::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 100px;
+    height: 100px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 50%;
+    transform: scale(3);
+    z-index: 0;
+}
+
+.info-statistiche {
+    position: relative;
+    z-index: 1;
+}
