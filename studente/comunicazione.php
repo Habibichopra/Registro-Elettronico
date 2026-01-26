@@ -84,7 +84,7 @@ include '../inclusi/nav.php';
     <div id="newmessaggioForm" class="scheda mb-5" style="display: none;">
         <div class="scheda-header">
             <h2>Nuovo Messaggio</h2>
-            <button class="btn-icona" onclick="apriChiudForm()"><i class="fas fa-times"></i></button>
+            <button class="btn-icona" onclick="apriChiudiForm()"><i class="fas fa-times"></i></button>
         </div>
         <div class="body-scheda">
             <form method="POST" action="comunicazioni.php">
