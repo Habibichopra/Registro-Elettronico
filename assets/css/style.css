@@ -78,6 +78,16 @@ ul {
     padding: 40px 20px;
 }
 
+.header-pagina {
+    margin-bottom: 30px;
+}
+
+.header-pagina h1 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
 .griglia-statistiche {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
