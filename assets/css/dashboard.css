@@ -90,3 +90,41 @@
     border-left: 3px solid var(--colore-pericolo);
     padding-left: 10px;
 }
+
+/* stati sepcifici per tabelle compiti e voti */
+.segno-stato {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stato-avvenuto {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #27ae60;
+}
+
+.stato-allerta {
+    background-color: rgba(241, 196, 15, 0.15);
+    color: #d35400;
+}
+
+.stato-pericolo {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #c0392b;
+}
+
+.status-graded {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.stato-scaduto {
+    background-color: #eee;
+    color: #777;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
