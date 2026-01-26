@@ -97,3 +97,20 @@ ul {
 .scheda-statistiche.viola { border-left-color: #9b59b6; }
 .scheda-statistiche.rosso { border-left-color: var(--colore-pericolo); }
 .scheda-statistiche.urgente { border-left-color: var(--colore-pericolo); background-color: #fff5f5; }
+
+.icona-statistiche {
+    font-size: 2rem;
+    color: #ccc;
+}
+
+.info-statistiche h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1;
+}
+
+.info-statistiche p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--testo-disattivato);
+}
