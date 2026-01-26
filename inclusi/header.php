@@ -10,6 +10,7 @@ require_once __DIR__ . '/../config/config.php';
     <title>Portale Studenti</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/styles.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
  
 </head>
 
