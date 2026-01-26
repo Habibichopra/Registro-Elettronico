@@ -84,7 +84,40 @@ include '../inclusi/nav.php';
                         $giorni_rimasti = $oggi->diff($scadenza)->days;
                         $is_urgente = ($giorni_rimasti < 3);
                     ?>
-                    
+                    <div class="scheda-task <?php echo $is_urgente ? 'contorno-urgente' : ''; ?>">
+                        <div class="task-header">
+                            <span class="avviso-corso"><?php echo htmlspecialchars($task['codice_corso']); ?></span>
+                            <?php if($is_urgente): ?>
+                                <span class="avviso-urgente">Scade tra <?php echo $giorni_rimasti; ?> gg</span>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <div class="task-body">
+                            <h3><?php echo htmlspecialchars($task['titolo']); ?></h3>
+                            <p class="testo-disattivato"><?php echo htmlspecialchars($task['nome_corso']); ?></p>
+                            <p class="task-desc">
+                                <?php echo substr(htmlspecialchars($task['descrizione']), 0, 120) . '...'; ?>
+                            </p>
+                            
+                            <div class="task-meta">
+                                <span><i class="far fa-calendar"></i> Scadenza: <strong><?php echo $scadenza->format('d/m/Y H:i'); ?></strong></span>
+                                <span><i class="fas fa-star"></i> Max Punti: <?php echo $task['punti_max']; ?></span>
+                            </div>
+                        </div>
+
+                        <div class="task-footer">
+                            <a href="consegna.php?id=<?php echo $task['id']; ?>" class="btn btn-primario btn-blocco">
+                                <i class="fas fa-upload"></i> Effettua Consegna
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="alert alert-successo">
+                <i class="fas fa-check-circle"></i> Ottimo lavoro! Non hai compiti in sospeso al momento.
+            </div>
+        <?php endif; ?>
     </section>
 
 </div>
