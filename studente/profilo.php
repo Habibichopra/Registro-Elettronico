@@ -30,7 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!empty($password) && strlen($password) < 8) {
          $errore = "La password deve essere di almeno 8 caratteri.";
     } else {
-
+        $dati = [
+            'nome' => $nome,
+            'cognome' => $cognome,
+            'email' => $email,
+            'password' => !empty($password) ? $password : null // Se vuota, non cambia
+        ];
 }
 
 ?>
