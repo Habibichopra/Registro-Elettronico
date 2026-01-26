@@ -13,4 +13,10 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+$compito_id = $_GET['id'];
+$studente_id = $_SESSION['user_id'];
+$compitoObj = new Compito();
+$consegnaObj = new Consegna();
+
+
 ?>
